@@ -9,16 +9,10 @@ public class PlayerController : MonoBehaviour
 
     Animator anime = null;
 
-    [SerializeField]
-    private Transform base_transform;
-
-    Transform savePos;
-
     // Start is called before the first frame update
     void Start()
     {
         anime = this.GetComponent<Animator>();
-        savePos = base_transform;
     }
 
     // Update is called once per frame
@@ -29,6 +23,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("ƒWƒƒƒ“ƒv");
             anime.SetTrigger("Jump");
 
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("“–‚½‚Á‚½");
         }
     }
 
