@@ -39,7 +39,7 @@ public class InstanceManager : MonoBehaviour
     {
         Vector3 pos = new Vector3();
 
-        pos = new Vector3(0, 0.2f, -5);
+        pos = new Vector3(0, 0.1f, -5);
 
 
         return pos;
