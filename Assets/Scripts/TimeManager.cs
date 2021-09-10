@@ -10,6 +10,14 @@ public class TimeManager : MonoBehaviour
 
     float distance = 0;
 
+    private int charTotal = 4;
+
+    public int CharTotal
+    {
+        get { return charTotal; }
+        set { charTotal = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +27,9 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceText.text = "移動距離：　" + DistanceCalc(4).ToString("F1") + " m";
+        if (CharTotal <= 0) CharTotal = 0;
+
+        distanceText.text = "移動距離：　" + DistanceCalc(CharTotal).ToString("F1") + " m";
     }
 
     // 距離の計測
