@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private KeyCode JumpKey;
 
     Animator anime = null;
+    Rigidbody rb = null;
 
     bool jumpFlag = true;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         anime = this.GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,9 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("“–‚½‚Á‚½");
+            GameManager.instance.timeManager.CharTotal--;
+            anime.SetTrigger("Damaged");
+            rb.useGravity = true;
         }
     }
 
