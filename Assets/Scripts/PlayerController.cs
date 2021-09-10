@@ -9,6 +9,10 @@ public class PlayerController : MonoBehaviour
 
     Animator anime = null;
 
+    bool jumpFlag = true;
+
+    float jumpTime = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +22,31 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(JumpKey))
+        if (jumpFlag)
         {
-            Debug.Log("ジャンプ");
-            anime.SetTrigger("Jump");
-
+            if (Input.GetKeyDown(JumpKey))
+            {
+                jumpFlag = false;
+                Debug.Log("ジャンプ");
+                anime.SetTrigger("Jump");
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
         }
+        else
+        {
+            jumpTime += Time.deltaTime;
+
+            if (jumpTime > 1.0f)
+            {
+                jumpTime = 0;
+                jumpFlag = true;
+            }
+        }
+
+        
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
