@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpTime += Time.deltaTime;
 
-            if (jumpTime > 1.0f)
+            if (jumpTime > 1.4f)
             {
                 jumpTime = 0;
                 jumpFlag = true;
