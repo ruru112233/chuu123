@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public TimeManager timeManager;
+
+    public Slider bgmSlider, seSlider;
 
     public static GameManager instance;
 
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        AudioManager.instance.SeSliderVolume(seSlider.normalizedValue);
+        AudioManager.instance.BgmSliderVolume(bgmSlider.normalizedValue);
     }
 }
