@@ -11,10 +11,20 @@ public class BirdController : MonoBehaviour
     bool upFlag = false;
     float upTime = 0;
 
+    // bird3‚Ì‹““®—p
+    [SerializeField] Transform pivot; //‰ñ“]’†S
+    [SerializeField] Transform bob; //U‚èŽq
+
+    float angularVelocity = 0;
+    float angularAcceleration = 0f;
+    float angularAccelerationValue = 15.0f;
+
+
     public enum BirdType
     {
         bird1,
         bird2,
+        bird3,
         none,
     }
 
@@ -79,8 +89,31 @@ public class BirdController : MonoBehaviour
             }
             
         }
+        else if (BirdType.bird3 == birdType)
+        {
+            angularVelocity += angularAcceleration * Time.deltaTime;
+            transform.position += new Vector3(0, 0, speed * Time.deltaTime);
+            bob.RotateAround(pivot.position, Vector3.forward, angularVelocity);
+            if (bob.position.x > pivot.position.x)
+            {
+                angularAcceleration = -angularAccelerationValue;
+            }
+            else
+            {
+                angularAcceleration = angularAccelerationValue;
+            }
+        }
+
+
     }
 
-
+    public Vector3 GetCurrentVelocity()
+    {
+        float r = Vector2.Distance(pivot.position, bob.position);
+        Vector2 dir = bob.position - pivot.position;
+        Vector2 velocityDir = new Vector2(-dir.y, dir.x);
+        velocityDir.Normalize();
+        return (r * angularVelocity * velocityDir);
+    }
 
 }
