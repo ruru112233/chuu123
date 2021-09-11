@@ -24,8 +24,8 @@ public class TitleManager : MonoBehaviour
 
     private void Start()
     {
-        
 
+        AudioManager.instance.PlayBGM(2);
 
     }
 
