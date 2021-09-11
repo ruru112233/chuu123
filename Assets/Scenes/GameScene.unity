@@ -2030,6 +2030,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceText: {fileID: 428227947}
+  player1: {fileID: 622638872}
+  player2: {fileID: 2092992449}
+  player3: {fileID: 1275133031}
+  player4: {fileID: 540829095}
 --- !u!1 &197647891
 GameObject:
   m_ObjectHideFlags: 0
@@ -5513,7 +5517,7 @@ GameObject:
   - component: {fileID: 540829094}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid (3)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5547,6 +5551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpKey: 122
+  revaival: 1
 --- !u!114 &540829096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6579,6 +6584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpKey: 118
+  revaival: 1
 --- !u!1 &629022488
 GameObject:
   m_ObjectHideFlags: 0
@@ -13154,7 +13160,7 @@ GameObject:
   - component: {fileID: 1275133030}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid (2)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13188,6 +13194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpKey: 120
+  revaival: 1
 --- !u!114 &1275133032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19184,7 +19191,7 @@ GameObject:
   - component: {fileID: 1384557381}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27667,7 +27674,7 @@ GameObject:
   - component: {fileID: 2092992448}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid (1)
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27701,6 +27708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpKey: 99
+  revaival: 1
 --- !u!114 &2092992450
 MonoBehaviour:
   m_ObjectHideFlags: 0
