@@ -37,12 +37,11 @@ public class TimeManager : MonoBehaviour
     {
         if (CharTotal <= 0) CharTotal = 0;
 
+        // 生存しているキャラクターの数をチェック
         CharTotal = TotalRevaival(player1.revaival,
                                   player2.revaival,
                                   player3.revaival,
                                   player4.revaival);
-
-        Debug.Log(CharTotal);
 
         distanceText.text = "移動距離：　" + DistanceCalc(CharTotal).ToString("F1") + " m";
     }
