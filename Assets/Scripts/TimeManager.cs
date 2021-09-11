@@ -22,6 +22,10 @@ public class TimeManager : MonoBehaviour
         set { charTotal = value; }
     }
 
+    // チェック用の変数
+    float check1 = 0;
+    float check2 = 0;
+
 
     [SerializeField]
     private PlayerController player1, player2, player3, player4;
@@ -47,6 +51,48 @@ public class TimeManager : MonoBehaviour
         
 
         float score = DistanceCalc(CharTotal);
+
+        if (BorderCheck(50.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if(BorderCheck(100.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(200.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(300.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(400.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(500.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(600.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(700.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(800.0f, score))
+        {
+            DistanceVoice(score);
+        }
+        else if (BorderCheck(900.0f, score))
+        {
+            DistanceVoice(score);
+        }
+
 
         if (endFlag && !rankingFlag)
         {
@@ -80,4 +126,52 @@ public class TimeManager : MonoBehaviour
 
         return total;
     }
+
+    // 距離が特定の値を超えたかチェック
+    bool BorderCheck(float targetDistance, float distance)
+    {
+        if (Time.frameCount % 2 == 0)
+        {
+            check1 = distance;
+        }
+        else
+        {
+            check2 = distance;
+        }
+
+        if (check1 >= targetDistance && check2 < targetDistance || check1 < targetDistance && check2 >= targetDistance)
+        {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    // 距離による声の設定
+    // 6 → すごいすごい
+    // 9 → エクセレント
+    // 10 → グッド
+    // 11 → マーベラス
+    void DistanceVoice(float distance)
+    {
+        if (distance >= 300)
+        {
+            AudioManager.instance.PlaySE(11);
+        }
+        else if(distance >= 200)
+        {
+            AudioManager.instance.PlaySE(9);
+        }
+        else if(distance >= 100)
+        {
+            AudioManager.instance.PlaySE(6);
+        }
+        else
+        {
+            AudioManager.instance.PlaySE(10);
+        }
+
+    }
+
 }
