@@ -5513,7 +5513,7 @@ GameObject:
   - component: {fileID: 540829094}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid (3)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8555,7 +8555,7 @@ GameObject:
   - component: {fileID: 836927185}
   m_Layer: 0
   m_Name: Character1_Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11507,7 +11507,7 @@ GameObject:
   - component: {fileID: 1146118793}
   m_Layer: 0
   m_Name: Character1_Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12312,7 +12312,7 @@ GameObject:
   - component: {fileID: 1199270956}
   m_Layer: 0
   m_Name: Character1_Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13154,7 +13154,7 @@ GameObject:
   - component: {fileID: 1275133030}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid (2)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18516,7 +18516,7 @@ GameObject:
   - component: {fileID: 1384389469}
   m_Layer: 0
   m_Name: Character1_Head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19184,7 +19184,7 @@ GameObject:
   - component: {fileID: 1384557381}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22470,6 +22470,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400092, guid: 7b7d8539cdecdd94ba53e8af65a526f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: 7b7d8539cdecdd94ba53e8af65a526f6, type: 3}
+      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13500000, guid: 7b7d8539cdecdd94ba53e8af65a526f6, type: 3}
@@ -27663,7 +27667,7 @@ GameObject:
   - component: {fileID: 2092992448}
   m_Layer: 0
   m_Name: ToonShader_SD_unitychan_humanoid (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
