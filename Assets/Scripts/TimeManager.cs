@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NCMB;
 
 public class TimeManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class TimeManager : MonoBehaviour
     float distance = 0;
 
     private int charTotal = 4;
+
+    bool endFlag = false;
+    bool rankingFlag = false;
 
     public int CharTotal
     {
@@ -35,7 +39,22 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CharTotal <= 0) CharTotal = 0;
+        if (CharTotal <= 0) 
+        {
+            CharTotal = 0;
+            endFlag = true;
+        }
+        
+
+        float score = DistanceCalc(CharTotal);
+
+        if (endFlag && !rankingFlag)
+        {
+            string newScore = score.ToString("F1");
+            double newScore1 = double.Parse(newScore); 
+            rankingFlag = true;
+            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(newScore1);
+        }
 
         // 生存しているキャラクターの数をチェック
         CharTotal = TotalRevaival(player1.revaival,
@@ -43,7 +62,7 @@ public class TimeManager : MonoBehaviour
                                   player3.revaival,
                                   player4.revaival);
 
-        distanceText.text = "移動距離：　" + DistanceCalc(CharTotal).ToString("F1") + " m";
+        distanceText.text = "移動距離：　" + score.ToString("F1") + " m";
     }
 
     // 距離の計測
