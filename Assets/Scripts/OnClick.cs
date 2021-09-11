@@ -13,7 +13,10 @@ public class OnClick : MonoBehaviour
 
     private void Start()
     {
-        volumePanel.SetActive(false);
+        if (volumePanel != null)
+        {
+            volumePanel.SetActive(false);
+        }
     }
 
     public void VolumeClick()
@@ -29,12 +32,23 @@ public class OnClick : MonoBehaviour
 
     public void StartButton()
     {
+        AudioManager.instance.PlaySE(12);
+        saveData.DataSave();
         SceneManager.LoadScene("GameScene");
     }
 
     public void TitleButton()
     {
+        AudioManager.instance.PlaySE(8);
+        saveData.DataSave();
         SceneManager.LoadScene("TitleScene");
+    }
+
+    public void ReTryButton()
+    {
+        AudioManager.instance.PlaySE(16);
+        saveData.DataSave();
+        SceneManager.LoadScene("GameScene");
     }
 
 }

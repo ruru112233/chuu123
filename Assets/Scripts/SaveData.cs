@@ -40,8 +40,8 @@ public class SaveData : MonoBehaviour
         }
         else if (objNm == "GameScene")
         {
-            //GameManager.instance.bgmSlider.normalizedValue = Data.bgmVolume;
-            //GameManager.instance.seSlider.normalizedValue = Data.seVolume;
+            GameManager.instance.bgmSlider.normalizedValue = Data.bgmVolume;
+            GameManager.instance.seSlider.normalizedValue = Data.seVolume;
         }
 
     }
