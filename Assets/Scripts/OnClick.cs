@@ -27,4 +27,14 @@ public class OnClick : MonoBehaviour
         saveData.DataSave();
     }
 
+    public void StartButton()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    public void TitleButton()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+
 }
