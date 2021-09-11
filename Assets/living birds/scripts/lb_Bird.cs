@@ -358,7 +358,7 @@ public class lb_Bird : MonoBehaviour {
 	void OnGroundBehaviors(){
 		idle = anim.GetCurrentAnimatorStateInfo(0).nameHash == idleAnimationHash;
 		if(!GetComponent<Rigidbody>().isKinematic){
-			GetComponent<Rigidbody>().isKinematic = true;
+			//GetComponent<Rigidbody>().isKinematic = true;
 		}
 		if(idle){
 			//the bird is in the idle animation, lets randomly choose a behavior every 3 seconds

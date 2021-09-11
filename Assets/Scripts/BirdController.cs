@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BirdController : MonoBehaviour
 {
-    float speed = 2f; 
+    float speed = 2f;
+    Rigidbody rb = null;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rb = this.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.isKinematic = true;
     }
 
     // Update is called once per frame
@@ -19,7 +22,17 @@ public class BirdController : MonoBehaviour
 
         if (transform.position.z > 10f)
         {
+            rb.isKinematic = true;
             this.gameObject.SetActive(false);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            rb.isKinematic = false;
+        }
+    }
+
 }
