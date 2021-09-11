@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     float jumpTime = 0;
 
+    public int revaival = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,8 +57,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("“–‚½‚Á‚½");
-            GameManager.instance.timeManager.CharTotal--;
             anime.SetTrigger("Damaged");
+            revaival = 0;
             rb.useGravity = true;
         }
     }

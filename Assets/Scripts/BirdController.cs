@@ -7,6 +7,7 @@ public class BirdController : MonoBehaviour
     float speed = 2f;
     Rigidbody rb = null;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,5 +35,6 @@ public class BirdController : MonoBehaviour
             rb.isKinematic = false;
         }
     }
+
 
 }
