@@ -25,6 +25,8 @@ public class InstanceManager : MonoBehaviour
 
         if (objPool != null)
         {
+            RiactionVoiseSet();
+
             foreach (Transform t in objPool.transform)
             {
                 if (!t.gameObject.activeSelf)
@@ -41,6 +43,19 @@ public class InstanceManager : MonoBehaviour
         
     }
 
+    // 声を設定
+
+    void RiactionVoiseSet()
+    {
+        // 2 「あっ！」
+        // 3 「うっそお」
+        // 4 「えーーー！」
+        // 5 「おっ！」
+        int num = Random.Range(2, 6);
+        AudioManager.instance.PlaySE(num);
+        
+    }
+
     Vector3 InstancePoint()
     {
         Vector3 pos = new Vector3();
@@ -54,7 +69,7 @@ public class InstanceManager : MonoBehaviour
     // 対象のオブジェクトを選択
     GameObject TargetObjectPool()
     {
-        int num = Random.Range(0, 15);
+        int num = Random.Range(0, 10);
 
         GameObject objectPool = null;
 
