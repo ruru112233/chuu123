@@ -9,7 +9,7 @@ public class InstanceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("BirdInstance", 1.0f, 1.0f);
+        InvokeRepeating("BirdInstance", 4.5f, 1.0f);
     }
 
     // Update is called once per frame
@@ -52,9 +52,35 @@ public class InstanceManager : MonoBehaviour
         // 4 「えーーー！」
         // 5 「おっ！」
         int num = Random.Range(2, 6);
-        AudioManager.instance.PlaySE(num);
+
+        switch (num)
+        {
+            case 2:
+                AudioManager.instance.PlaySE(2);
+                GameManager.instance.commentText0.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText0));
+                break;
+            case 3:
+                AudioManager.instance.PlaySE(3);
+                GameManager.instance.commentText1.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText1));
+                break;
+            case 4:
+                AudioManager.instance.PlaySE(4);
+                GameManager.instance.commentText2.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText2));
+                break;
+            case 5:
+                AudioManager.instance.PlaySE(5);
+                GameManager.instance.commentText3.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText3));
+                break;
+        }
         
     }
+
+    
+
 
     Vector3 InstancePoint()
     {

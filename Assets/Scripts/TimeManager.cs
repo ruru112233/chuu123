@@ -26,6 +26,8 @@ public class TimeManager : MonoBehaviour
     float check1 = 0;
     float check2 = 0;
 
+    float score = 0;
+
 
     [SerializeField]
     private PlayerController player1, player2, player3, player4;
@@ -43,70 +45,74 @@ public class TimeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CharTotal <= 0) 
-        {
-            CharTotal = 0;
-            endFlag = true;
-        }
         
 
-        float score = DistanceCalc(CharTotal);
+        if (GameManager.instance.gameStartFlag)
+        {
+            score = DistanceCalc(CharTotal);
 
-        if (BorderCheck(50.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if(BorderCheck(100.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(200.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(300.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(400.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(500.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(600.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(700.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(800.0f, score))
-        {
-            DistanceVoice(score);
-        }
-        else if (BorderCheck(900.0f, score))
-        {
-            DistanceVoice(score);
-        }
+            if (CharTotal <= 0)
+            {
+                CharTotal = 0;
+                endFlag = true;
+            }
+
+            if (BorderCheck(50.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(100.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(200.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(300.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(400.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(500.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(600.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(700.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(800.0f, score))
+            {
+                DistanceVoice(score);
+            }
+            else if (BorderCheck(900.0f, score))
+            {
+                DistanceVoice(score);
+            }
 
 
-        if (endFlag && !rankingFlag)
-        {
-            string newScore = score.ToString("F1");
-            double newScore1 = double.Parse(newScore); 
-            rankingFlag = true;
-            naichilab.RankingLoader.Instance.SendScoreAndShowRanking(newScore1);
-        }
+            if (endFlag && !rankingFlag)
+            {
+                string newScore = score.ToString("F1");
+                double newScore1 = double.Parse(newScore);
+                rankingFlag = true;
+                naichilab.RankingLoader.Instance.SendScoreAndShowRanking(newScore1);
+            }
 
-        // 生存しているキャラクターの数をチェック
-        CharTotal = TotalRevaival(player1.revaival,
-                                  player2.revaival,
-                                  player3.revaival,
-                                  player4.revaival);
+            // 生存しているキャラクターの数をチェック
+            CharTotal = TotalRevaival(player1.revaival,
+                                      player2.revaival,
+                                      player3.revaival,
+                                      player4.revaival);
+        }
 
         distanceText.text = "移動距離：　" + score.ToString("F1") + " m";
     }
@@ -158,18 +164,26 @@ public class TimeManager : MonoBehaviour
         if (distance >= 300)
         {
             AudioManager.instance.PlaySE(11);
+            GameManager.instance.commentText8.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText8)); 
         }
         else if(distance >= 200)
         {
             AudioManager.instance.PlaySE(9);
+            GameManager.instance.commentText6.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText6));
         }
         else if(distance >= 100)
         {
             AudioManager.instance.PlaySE(6);
+            GameManager.instance.commentText4.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText4));
         }
         else
         {
             AudioManager.instance.PlaySE(10);
+            GameManager.instance.commentText7.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText7));
         }
 
     }

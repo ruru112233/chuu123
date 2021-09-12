@@ -25,20 +25,14 @@ public class SaveData : MonoBehaviour
         AudioManager.instance.BgmSliderVolume(Data.bgmVolume);
         AudioManager.instance.SeSliderVolume(Data.seVolume);
 
-        Debug.Log("Data.bgmVolume" + Data.bgmVolume);
-        Debug.Log("Data.seVolume" + Data.seVolume);
-
         string objNm = SceneManager.GetActiveScene().name;
-
-        Debug.Log("Data.bgmVolume>>>>:" + Data.bgmVolume);
-        Debug.Log("Data.seVolume>>>>:" + Data.seVolume);
 
         if (objNm == "TitleScene")
         {
             TitleManager.instance.bgmSlider.normalizedValue = Data.bgmVolume;
             TitleManager.instance.seSlider.normalizedValue = Data.seVolume;
         }
-        else if (objNm == "GameScene")
+        else
         {
             GameManager.instance.bgmSlider.normalizedValue = Data.bgmVolume;
             GameManager.instance.seSlider.normalizedValue = Data.seVolume;

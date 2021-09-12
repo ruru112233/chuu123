@@ -21,34 +21,48 @@ public class OnClick : MonoBehaviour
 
     public void VolumeClick()
     {
+        AudioManager.instance.PlaySE(15);
         volumePanel.SetActive(true);
     }
 
     public void CloseButton()
     {
-        volumePanel.SetActive(false);
+        AudioManager.instance.PlaySE(15);
         saveData.DataSave();
+        volumePanel.SetActive(false);
     }
 
     public void StartButton()
     {
         AudioManager.instance.PlaySE(12);
-        saveData.DataSave();
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(GameSceneMove(0));
     }
 
     public void TitleButton()
     {
         AudioManager.instance.PlaySE(8);
-        saveData.DataSave();
-        SceneManager.LoadScene("TitleScene");
+        StartCoroutine(GameSceneMove(1));
     }
 
     public void ReTryButton()
     {
         AudioManager.instance.PlaySE(16);
-        saveData.DataSave();
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(GameSceneMove(0));
+    }
+
+    IEnumerator GameSceneMove(int num)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        switch (num)
+        {
+            case 0:
+                SceneManager.LoadScene("GameScene");
+                break;
+            case 1:
+                SceneManager.LoadScene("TitleScene");
+                break;
+        }
     }
 
 }

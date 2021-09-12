@@ -21,34 +21,40 @@ public class PlayerController : MonoBehaviour
     {
         anime = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
+
+        anime.SetBool("Walking", false);
+
+        StartCoroutine(WalkStart());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (jumpFlag && revaival == 1)
+        if (GameManager.instance.gameStartFlag)
         {
-            if (Input.GetKeyDown(JumpKey))
+            if (jumpFlag && revaival == 1)
             {
-                jumpFlag = false;
-                Debug.Log("ジャンプ");
-                anime.SetTrigger("Jump");
-                AudioManager.instance.PlaySE(14);
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                if (Input.GetKeyDown(JumpKey))
+                {
+                    jumpFlag = false;
+                    Debug.Log("ジャンプ");
+                    anime.SetTrigger("Jump");
+                    AudioManager.instance.PlaySE(14);
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else
+            {
+                jumpTime += Time.deltaTime;
+
+                if (jumpTime > 1.2f)
+                {
+                    jumpTime = 0;
+                    jumpFlag = true;
+                }
             }
         }
-        else
-        {
-            jumpTime += Time.deltaTime;
 
-            if (jumpTime > 1.2f)
-            {
-                jumpTime = 0;
-                jumpFlag = true;
-            }
-        }
-
-        
     }
 
     // 声の設定
@@ -56,16 +62,26 @@ public class PlayerController : MonoBehaviour
     {
         int num = Random.Range(0, 3);
 
+        // 3 →　うっそー
+        // 7 →　そんなー
+        // 13 →　おっしー
+
         switch (num)
         {
             case 0:
                 AudioManager.instance.PlaySE(3);
+                GameManager.instance.commentText1.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText1));
                 break;
             case 1:
                 AudioManager.instance.PlaySE(7);
+                GameManager.instance.commentText5.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText5));
                 break;
             case 2:
                 AudioManager.instance.PlaySE(13);
+                GameManager.instance.commentText9.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText9));
                 break;
         }
     }
@@ -79,6 +95,14 @@ public class PlayerController : MonoBehaviour
             revaival = 0;
             rb.useGravity = true;
         }
+    }
+
+
+    IEnumerator WalkStart()
+    {
+        yield return new WaitForSeconds(4);
+
+        anime.SetBool("Walking", true);
     }
 
 }
