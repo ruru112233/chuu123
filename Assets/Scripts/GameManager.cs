@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     public bool gameStartFlag = false;
 
+    float bgmVol = 0;
+    float seVol = 0;
+
     public static GameManager instance;
 
     private void Awake()
@@ -31,13 +34,16 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlayBGM(2);
         StartCoroutine(Init());
         CommentFalse();
+
+        bgmVol = PlayerPrefs.GetFloat("BGMVOL", 0.3f);
+        seVol = PlayerPrefs.GetFloat("SEVOL", 0.8f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        AudioManager.instance.SeSliderVolume(seSlider.normalizedValue);
-        AudioManager.instance.BgmSliderVolume(bgmSlider.normalizedValue);
+        AudioManager.instance.SeSliderVolume(seVol);
+        AudioManager.instance.BgmSliderVolume(bgmVol);
     }
 
     // スタート時の処理
@@ -94,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FalseObj(GameObject obj)
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.8f);
 
         obj.SetActive(false);
     }

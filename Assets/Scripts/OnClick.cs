@@ -52,7 +52,7 @@ public class OnClick : MonoBehaviour
 
     IEnumerator GameSceneMove(int num)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
         switch (num)
         {
