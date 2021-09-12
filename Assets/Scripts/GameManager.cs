@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Slider bgmSlider, seSlider;
 
     public GameObject text0, text1, text2, text3;
+    public GameObject commentText0, commentText1, commentText2, commentText3, commentText4,
+                      commentText5, commentText6, commentText7, commentText8, commentText9;
 
     public bool gameStartFlag = false;
 
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.PlayBGM(2);
         StartCoroutine(Init());
+        CommentFalse();
     }
 
     // Update is called once per frame
@@ -72,6 +75,28 @@ public class GameManager : MonoBehaviour
         text1.SetActive(false);
         text2.SetActive(false);
         text3.SetActive(false);
+    }
+
+    // ÉRÉÅÉìÉgÇÃèâä˙âª
+    public void CommentFalse()
+    {
+        commentText0.SetActive(false);
+        commentText1.SetActive(false);
+        commentText2.SetActive(false);
+        commentText3.SetActive(false);
+        commentText4.SetActive(false);
+        commentText5.SetActive(false);
+        commentText6.SetActive(false);
+        commentText7.SetActive(false);
+        commentText8.SetActive(false);
+        commentText9.SetActive(false);
+    }
+
+    public IEnumerator FalseObj(GameObject obj)
+    {
+        yield return new WaitForSeconds(0.6f);
+
+        obj.SetActive(false);
     }
 
 }

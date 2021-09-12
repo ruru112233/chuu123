@@ -62,16 +62,26 @@ public class PlayerController : MonoBehaviour
     {
         int num = Random.Range(0, 3);
 
+        // 3 →　うっそー
+        // 7 →　そんなー
+        // 13 →　おっしー
+
         switch (num)
         {
             case 0:
                 AudioManager.instance.PlaySE(3);
+                GameManager.instance.commentText1.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText1));
                 break;
             case 1:
                 AudioManager.instance.PlaySE(7);
+                GameManager.instance.commentText5.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText5));
                 break;
             case 2:
                 AudioManager.instance.PlaySE(13);
+                GameManager.instance.commentText9.SetActive(true);
+                StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText9));
                 break;
         }
     }

@@ -164,18 +164,26 @@ public class TimeManager : MonoBehaviour
         if (distance >= 300)
         {
             AudioManager.instance.PlaySE(11);
+            GameManager.instance.commentText8.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText8)); 
         }
         else if(distance >= 200)
         {
             AudioManager.instance.PlaySE(9);
+            GameManager.instance.commentText6.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText6));
         }
         else if(distance >= 100)
         {
             AudioManager.instance.PlaySE(6);
+            GameManager.instance.commentText4.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText4));
         }
         else
         {
             AudioManager.instance.PlaySE(10);
+            GameManager.instance.commentText7.SetActive(true);
+            StartCoroutine(GameManager.instance.FalseObj(GameManager.instance.commentText7));
         }
 
     }
