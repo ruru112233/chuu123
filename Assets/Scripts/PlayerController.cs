@@ -21,34 +21,40 @@ public class PlayerController : MonoBehaviour
     {
         anime = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
+
+        anime.SetBool("Walking", false);
+
+        StartCoroutine(WalkStart());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (jumpFlag && revaival == 1)
+        if (GameManager.instance.gameStartFlag)
         {
-            if (Input.GetKeyDown(JumpKey))
+            if (jumpFlag && revaival == 1)
             {
-                jumpFlag = false;
-                Debug.Log("ジャンプ");
-                anime.SetTrigger("Jump");
-                AudioManager.instance.PlaySE(14);
-                transform.rotation = Quaternion.Euler(0, 180, 0);
+                if (Input.GetKeyDown(JumpKey))
+                {
+                    jumpFlag = false;
+                    Debug.Log("ジャンプ");
+                    anime.SetTrigger("Jump");
+                    AudioManager.instance.PlaySE(14);
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+            }
+            else
+            {
+                jumpTime += Time.deltaTime;
+
+                if (jumpTime > 1.2f)
+                {
+                    jumpTime = 0;
+                    jumpFlag = true;
+                }
             }
         }
-        else
-        {
-            jumpTime += Time.deltaTime;
 
-            if (jumpTime > 1.2f)
-            {
-                jumpTime = 0;
-                jumpFlag = true;
-            }
-        }
-
-        
     }
 
     // 声の設定
@@ -79,6 +85,14 @@ public class PlayerController : MonoBehaviour
             revaival = 0;
             rb.useGravity = true;
         }
+    }
+
+
+    IEnumerator WalkStart()
+    {
+        yield return new WaitForSeconds(4);
+
+        anime.SetBool("Walking", true);
     }
 
 }

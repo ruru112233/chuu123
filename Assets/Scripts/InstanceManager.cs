@@ -9,7 +9,7 @@ public class InstanceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("BirdInstance", 1.0f, 1.0f);
+        InvokeRepeating("BirdInstance", 4.5f, 1.0f);
     }
 
     // Update is called once per frame

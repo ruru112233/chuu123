@@ -21,11 +21,13 @@ public class OnClick : MonoBehaviour
 
     public void VolumeClick()
     {
+        AudioManager.instance.PlaySE(15);
         volumePanel.SetActive(true);
     }
 
     public void CloseButton()
     {
+        AudioManager.instance.PlaySE(15);
         volumePanel.SetActive(false);
         saveData.DataSave();
     }
